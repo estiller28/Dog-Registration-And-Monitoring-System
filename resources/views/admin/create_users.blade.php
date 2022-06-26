@@ -41,10 +41,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="validationCustom02" class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control"  required aria-describedby="validationServer03Feedback">
-                                <div class="invalid-feedback">
-                                    Name is required
-                                </div>
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
+                                @if($errors->has('name'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('name') }}
+                                    </div>
+                                @else
+                                    <div class="invalid-feedback">
+                                       Name is required
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="mb-3">
