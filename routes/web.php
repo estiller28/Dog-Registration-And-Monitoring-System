@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DogsController;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Livewire\RegisterDogs;
+use App\Http\Controllers\Test;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 
 
 
@@ -31,6 +31,8 @@ Route::prefix('admin')->group(function(){
     Route::post('/manage/dogs/table/info', [DogsController::class, 'render'])->name('get.dogs');
     Route::get('dogs/create', [DogsController::class, 'create'])->name('dogs.create');
     Route::resource('/manage/users', UserController::class);
+    Route::get('test', [Test::class, 'index']);
+
 
 });
 

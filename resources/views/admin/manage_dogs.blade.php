@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">Dogs Management</h1>
+        <h1 class="h3 mb-3"><strong>Dogs Management </strong></h1>
         <div class="row">
             <div class="col-12">
                 <div class="card">

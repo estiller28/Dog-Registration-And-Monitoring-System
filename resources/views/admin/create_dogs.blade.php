@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3"> Register Dogs</h1>
+        <h1 class="h3 mb-3"><b>Register Dogs</b></h1>
         <div class="col-12">
             <div class="card">
                 <div class="card-header border-bottom">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="row g-5 justify-content-between">
+                    <div class="row g-5 justify-content-between px-lg-2">
                         <div class="col-md-4 mb-4">
                             <div id="placeholder" class="col-md-12 mb-3">
                                 <img class="img-fluid" src="{{ asset('./storage/logo/dog-placeholder.jpg') }}">
@@ -30,12 +30,12 @@
                                 <div id="img-preview"></div>
                             </div>
                             <label for="validationCustom01" class="form-label">Select image</label>
-                            <input class="form-control" type="file"  accept="image/*" id="image" name="dog_img">
+                            <input class="form-control" type="file"  accept="image/jpeg" id="image" name="dog_img">
                         </div>
                         <div class="col-md-8">
                             <div class="row justify-content-center">
-                                <div class="col-md-6 mb-4">
-                                    <h4 class="mb-4">Dog Information</h4>
+                                <div class="col-md-6 mb-4 border-">
+                                    <h4 class="mb-4"><strong>1. Dog Information</strong></h4>
                                     <div class="mb-3">
                                         <label for="validationCustom02" class="form-label">Dog Name</label>
                                         <input type="text" name="name" class="form-control"  required aria-describedby="validationServer03Feedback">
@@ -108,7 +108,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h4 class="mb-4">Owner Information</h4>
+                                    <h4 class="mb-4"><strong>2. Owner Information</strong></h4>
                                     <div class="mb-3">
                                         <label for="validationCustom02" class="form-label">Owner Name</label>
                                         <input type="text" name="name" class="form-control"  required aria-describedby="validationServer03Feedback">
@@ -128,7 +128,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between px-lg-2">
                         <div class="mr-2">
                         </div>
                         <div>
@@ -197,7 +197,7 @@
         #img-preview {
             display: none;
             width: 500px;
-            border: 2px dashed #333;
+            border: 2px dashed #3B7DDD;
             margin-bottom: 20px;
         }
         #img-preview img {

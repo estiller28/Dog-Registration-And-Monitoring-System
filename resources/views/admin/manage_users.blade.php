@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">User Management</h1>
+        <h1 class="h3 mb-3"><strong>User Management</strong></h1>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -28,7 +28,7 @@
                                 <th>Barangay</th>
                                 <th>User Name</th>
                                 <th>Email</th>
-                                <th width="20%">Action</th>
+                                <th width="15%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
