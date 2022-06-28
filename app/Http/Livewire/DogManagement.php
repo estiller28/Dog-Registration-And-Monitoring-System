@@ -4,10 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class RegisterDogs extends Component
+class DogManagement extends Component
 {
     public function render()
     {
-        return view('livewire.register-dogs');
+        return view('livewire.dog-management');
     }
 }

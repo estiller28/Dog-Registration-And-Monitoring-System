@@ -34,7 +34,7 @@ class roleSeeder extends Seeder
         $defaultAdmin->assignRole('Admin');
 
         $barangay = Barangay::create([
-            'barangay_name' => 'Test'
+            'barangay_name' => 'ManageUserController'
         ]);
 
         $test = User::create([

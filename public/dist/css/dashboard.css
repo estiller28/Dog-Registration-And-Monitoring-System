@@ -1,6 +1,10 @@
 @media (max-width: 600px){
     div.dataTables_filter, div.dataTables_length {
         display: none !important;
+
+    }
+    #customSearch{
+        display: none;
     }
 }
 div.dataTables_filter, div.dataTables_length {
