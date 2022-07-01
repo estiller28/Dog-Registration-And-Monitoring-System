@@ -53,12 +53,64 @@
     </div>
 
     @push('js')
-        <script src="{{ asset('dist/js/datatable.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+
+        <script>
+
+
+
+            $(document).ready( function () {
+                renderTable();
+            } );
+
+
+            function renderTable(){
+                myTable =  $('#dogsTable').DataTable({
+                    "responsive": true, "autoWidth": true, "scrollX": false, "pageLength": 10, "lengthChange": false,
+                    "search": {
+                        "caseInsensitive": true,
+                    },
+                    "": false,
+
+                    "columnDefs": [{
+                        "className": "dt-left",
+                        "targets": "_all"
+                    }
+                    ],
+                    "dom": "lrtip" //t
+
+                });
+
+                $('#customSearch').keyup(function (){
+                    myTable.search($(this).val()).draw();
+                })
+            }
+
+
+
+            document.addEventListener("DOMContentLoaded", () => {
+                Livewire.hook('element.updated', (el, component) => {
+                    $('#dogsTable').DataTable().destroy();
+                })
+
+
+                Livewire.hook('message.processed', (message, component) => {
+                    renderTable();
+                })
+            });
+
+
+
+        </script>
+
+
     @endpush
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+
+
 
 @endsection
 

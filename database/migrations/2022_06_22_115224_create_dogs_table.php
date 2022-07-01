@@ -16,8 +16,15 @@ return new class extends Migration
         Schema::create('dogs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('barangay_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('purok_id')->nullable()->constrained()->nullOnDelete();
             $table->string('dog_name')->nullable();
             $table->string('owner_name')->nullable();
+            $table->string('dog_image')->nullable();
+            $table->string('origin')->nullable();
+            $table->string('breed')->nullable();
+            $table->string('age')->nullable();
+            $table->string('sex')->nullable();
+            $table->string('vaccines_taken')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();

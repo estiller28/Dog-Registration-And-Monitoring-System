@@ -16,6 +16,7 @@ class CreateUserForm extends Component
     public $password = '';
     public $password_confirmation ='';
 
+    public $user = '';
 
     protected $rules = [
         'barangay' => 'required',
@@ -47,16 +48,17 @@ class CreateUserForm extends Component
         ]);
 
         $user->assignRole('CoAdmin');
-
         session()->flash('message', 'User created succesfully.');
-        return redirect()->route('user.index');
 
+        return redirect()->route('users.index');
 
     }
 
 
     public function render()
     {
-        return view('livewire.create-user-form');
+        return view('livewire.create-user-form', [
+            'user' => $this->user
+        ]);
     }
 }
