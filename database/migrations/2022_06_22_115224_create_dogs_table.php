@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('dogs', function (Blueprint $table) {
             $table->id();
+            $table->string('id_number')->nullable();
             $table->foreignId('barangay_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('purok_id')->nullable()->constrained()->nullOnDelete();
             $table->string('dog_name')->nullable();
@@ -22,12 +23,17 @@ return new class extends Migration
             $table->string('dog_image')->nullable();
             $table->string('origin')->nullable();
             $table->string('breed')->nullable();
+            $table->string('color')->nullable();
             $table->string('age')->nullable();
             $table->string('sex')->nullable();
+            $table->string('sex_description')->nullable();
             $table->string('vaccines_taken')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
+
+            //table index
+            $table->index('id_number');
         });
     }
 

@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\DB;
 class DogManagement extends Component
 {
 
-    public $users = '';
+    public $barangay = '';
     public $dogs;
-    public $all;
+    public $allDogs;
     public $count;
 
     protected $rules = [
-       'users' => 'required',
+        'barangay' => 'required',
 
     ];
 
@@ -34,21 +34,29 @@ class DogManagement extends Component
 
     public function getDogs(){
         $this->validate();
-        $this->all = User::with('barangay')->where('barangay_id', $this->users)
-          ->get();
 
-        $this->count = $this->all->count();
+        $this->allDogs = Dogs::with('barangay')
+            ->where('barangay_id', $this->barangay)
+            ->get();
+
+        $this->count = $this->allDogs->count();
     }
 
     public function export($all){
 
     }
 
+    public function edit(){
+        return view('livewire.create-user-form');
+    }
+
+
+
     public function render(){
 
         return view('livewire.dog-management', [
             'count' => $this->count,
-            'allUsers' => $this->all
+            'allDogs' => $this->allDogs
         ]);
     }
 }

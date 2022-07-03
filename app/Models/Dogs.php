@@ -9,11 +9,25 @@ class Dogs extends Model
 {
     use HasFactory;
 
-//    protected $fillable = [
-////        'barangay_id',
-//        'dog_name',
-//        'owner_name',
-//        'contact_number',
-//        'address'
-//    ];
+    protected $fillable = [
+        'id_number',
+        'barangay_id',
+        'dog_name',
+        'owner_name',
+        'contact_number',
+        'address',
+        'dog_image',
+        'origin',
+        'breed' ,
+        'color',
+        'barangay',
+        'age',
+        'sex' ,
+        'vaccines_taken',
+        'owner_name',
+    ];
+
+    public function barangay(){
+        return $this->belongsTo(Barangay::class, 'barangay_id', 'id')->withDefault();
+    }
 }

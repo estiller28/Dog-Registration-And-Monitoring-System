@@ -10,16 +10,15 @@ use Livewire\Component;
 class CreateUserForm extends Component
 {
 
-    public $barangay = '';
+    public $barangay_name = '';
     public $name = '';
     public $email = '';
     public $password = '';
     public $password_confirmation ='';
-
     public $user = '';
 
     protected $rules = [
-        'barangay' => 'required',
+        'barangay_name' => 'required|unique:barangays',
         'name' => 'required',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:8',
@@ -37,7 +36,7 @@ class CreateUserForm extends Component
         $this->validate();
 
         $barangay = Barangay::create([
-            'barangay_name' => $this->barangay,
+            'barangay_name' => $this->barangay_name,
         ]);
 
         $user = User::create([

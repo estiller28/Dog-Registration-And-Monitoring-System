@@ -33,7 +33,7 @@ class roleSeeder extends Seeder
 
         $defaultAdmin->assignRole('Admin');
 
-        $barangay = Barangay::create([
+       /* $barangay = Barangay::create([
             'barangay_name' => 'ManageUserController'
         ]);
 
@@ -42,8 +42,8 @@ class roleSeeder extends Seeder
             'name' => 'test',
             'email' => 'test@gmail.com',
             'password' => bcrypt('password'),
-        ]);
+        ]);*/
 
-        $test->assignRole('CoAdmin');
+//        $test->assignRole('CoAdmin');
     }
 }

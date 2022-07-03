@@ -4,8 +4,8 @@
             <form wire:submit.prevent="CreateUser" class="row needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="validationCustom01" class="form-label">Barangay Name</label>
-                    <input type="text" wire:model="barangay" class="form-control  @error('barangay') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
-                    @error('barangay')
+                    <input type="text" wire:model="barangay_name" class="form-control  @error('barangay_name') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
+                    @error('barangay_name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -48,8 +48,6 @@
                     </div>
                 </div>
             </form>
-
-
         </div>
     </div>
 </div>

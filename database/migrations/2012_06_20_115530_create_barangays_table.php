@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('barangay_name');
             $table->timestamps();
+            $table->index('barangay_name');
         });
     }
 
