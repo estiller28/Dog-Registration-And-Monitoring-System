@@ -152,10 +152,10 @@
                 $('#female').hide();
 
                 $('#selectSex').on('change', function (){
-                    if(this.value =='1'){
+                    if(this.value == 'Male'){
                         $('#male').show();
                         $('#female').hide();
-                    }else if(this.value == '2'){
+                    }else if(this.value == 'Female'){
                         $('#male').hide();
                         $('#female').show();
                     }else{

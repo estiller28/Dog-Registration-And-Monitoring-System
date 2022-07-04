@@ -29,8 +29,8 @@
                 <td>{{ $user->name}}</td>
                 <td>{{ $user->email}}</td>
                 <td>
-                    <a href="{{ route('dogs.create') }}" class="btn btn-sm btn-info">Edit</a>
-                    <a  class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{{ route('dogs.create') }}" class="btn btn-info">Edit</a>
+                    <a  class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         @endforeach

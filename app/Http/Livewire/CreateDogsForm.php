@@ -32,6 +32,7 @@ class CreateDogsForm extends Component
     public $contact_number;
 
     public $dogs;
+    public $new_image_name;
 
     protected $rules = [
         'brgy'=> 'max:255',
@@ -58,19 +59,19 @@ class CreateDogsForm extends Component
         $this->barangays = Barangay::orderBy('barangay_name', 'asc')->get();
     }
 
-    public function dashboard(){
-        $allBaptized = User::all()->count();
-
-
-    }
-
-
 
     public function create(){
         $this->validate();
 
+        $filename = "";
+        if ($this->dog_image) {
+            $filename = $this->dog_image->store('dog-images', 'public');
+        } else {
+            $filename = Null;
+        }
+
         $dogs = Dogs::create([
-            'dog_image' => $this->dog_image,
+            'dog_image' => $filename,
             'dog_name' => $this->dog_name,
             'origin' => $this->origin,
             'breed' => $this->breed,

@@ -28,7 +28,7 @@
                             <div><a wire:ignore  href="{{ route('dogs.create') }}" class="btn btn-md btn-success btn-sm-block"><i class="align-middle me-2" data-feather="folder-plus"></i>Register Dogs</a></div>
 
                             @if($allDogs != null)
-                                <div wire:ignore><a  class="btn btn-md btn-info"><i class="align-middle me-1 fa-solid fa-circle-down"></i>Export</a></div>
+                                <div wire:ignore><a wire:click="export" class="btn btn-md btn-info"><i class="align-middle me-1 fa-solid fa-circle-down"></i>Export</a></div>
                                 <div class="d-flex ms-auto">
                                     <input id="customSearch" type="search" class="form-control mr-2" placeholder="Search">
                                 </div>
@@ -47,6 +47,7 @@
                             <thead style="background: #D0C9C0; ">
                             <tr>
                                 <th>ID Number</th>
+                                <th>Dog Image</th>
                                 <th>Dog Name</th>
                                 <th>Owner's Name</th>
                                 <th>Contact Number</th>
@@ -58,6 +59,12 @@
                             @foreach($allDogs as $dog)
                                 <tr>
                                     <td>{{ $dog->id_number }}</td>
+                                    @if($dog->dog_image)
+                                        <td><img src="{{ asset('/storage/'. $dog->dog_image)  }}"  style="width: 50px; border-radius: 10px; height: 50px;"></td>
+                                    @else
+                                        <td><img class="img-fluid" src="{{ asset('./storage/logo/dog-placeholder.jpg') }}" style="width: 50px; border-radius: 10px; height: 50px;"></td>
+                                    @endif
+
                                     <td>{{ $dog->dog_name}}</td>
                                     <td>{{ $dog->owner_name }}</td>
                                     <td>{{ $dog->contact_number }}</td>

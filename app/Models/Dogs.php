@@ -22,7 +22,8 @@ class Dogs extends Model
         'color',
         'barangay',
         'age',
-        'sex' ,
+        'sex',
+        'sex_description',
         'vaccines_taken',
         'owner_name',
     ];

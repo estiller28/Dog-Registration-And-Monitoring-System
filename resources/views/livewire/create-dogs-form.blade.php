@@ -71,8 +71,8 @@
                                 <label for="sex" class="form-label">Sex</label>
                                 <select wire:model="sex" class="form-select @error('sex') is-invalid @enderror" id="selectSex" aria-describedby="validationServer04Feedback" required>
                                     <option selected="selected" value="">-select sex-</option>
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
                                 @error('sex')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -80,13 +80,13 @@
                             </div>
                             <div wire:ignore id="female" class="mb-3">
                                 <div class="form-check">
-                                    <input wire:model="sex_description" class="form-check-input" type="checkbox" value="Spayed (Ligate)" id="flexCheckDefault">
+                                    <input wire:model.defer="sex_description" class="form-check-input @error('sex_description') is-invalid @enderror" type="checkbox" value="Spayed (Ligate)" id="flexCheckChecked">
                                     <label class="form-check-label" for="check1">
                                         Spayed (Ligate)
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input wire:model="sex_description" class="form-check-input" type="checkbox" value="Infact" id="flexCheckChecked">
+                                    <input wire:model.defer="sex_description" class="form-check-input @error('sex_description') is-invalid @enderror" type="checkbox" value="Infact" id="flexCheckChecked">
                                     <label class="form-check-label" for="check2">
                                         Infact
                                     </label>
@@ -95,13 +95,13 @@
 
                             <div wire:ignore id="male" class="mb-3">
                                 <div class="form-check">
-                                    <input wire:model="sex_description" class="form-check-input" type="checkbox" value="Castracted (Capon)" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
+                                    <input wire:model.defer="sex_description" class="form-check-input @error('sex_description') is-invalid @enderror" type="checkbox" value="Castracted (Capon)" id="flexCheckChecked">
+                                    <label class="form-check-label" for="Castracted (Capon)">
                                         Castracted (Capon)
 
                                 </div>
                                 <div class="form-check">
-                                    <input wire:model="sex_description" class="form-check-input @error('sex_description') is-invalid @enderror" type="checkbox" value="Infact" id="flexCheckChecked">
+                                    <input wire:model.defer="sex_description" class="form-check-input @error('sex_description') is-invalid @enderror" type="checkbox" value="Infact" id="flexCheckChecked">
                                     <label class="form-check-label" for="flexCheckChecked">
                                         Infact
                                     </label>
@@ -128,6 +128,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="mb-3">
                                 <label for="contact_number" class="form-label">Contact Number</label>
                                 <input wire:model="contact_number"  type="number" name="name" class="form-control  @error('contact_number') is-invalid @enderror" placeholder="+63" required aria-describedby="validationServer03Feedback">
@@ -135,6 +136,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="mb-3">
                                 <label for="barangay" class="form-label">Barangay</label>
                                 <select wire:model="barangay" class="form-select @error('barangay') is-invalid @enderror"  aria-describedby="validationServer04Feedback" required>

@@ -11,6 +11,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+    background-color: #5CB874;
 }
 
 a {
@@ -97,10 +98,11 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  background:  rgb(37, 38, 37, 0.6);
   transition: all 0.5s;
   z-index: 997;
   height: 70px;
+    color: #ffff;
 }
 #header.header-scrolled {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -275,7 +277,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 15px;
   left: 15px;
   padding: 10px 0;
-  background-color: #fff;
+
   overflow-y: auto;
   transition: 0.3s;
 }
@@ -1246,4 +1248,10 @@ section {
 }
 #footer .credits {
   font-size: 13px;
+}
+
+
+
+.text-green{
+    color: #198754;
 }

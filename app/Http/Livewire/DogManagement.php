@@ -42,8 +42,8 @@ class DogManagement extends Component
         $this->count = $this->allDogs->count();
     }
 
-    public function export($all){
-
+    public function export(){
+        dd($this->allDogs);
     }
 
     public function edit(){
