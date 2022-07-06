@@ -12,7 +12,6 @@ class CreateDogsForm extends Component
 {
     use WithFileUploads;
 
-
     public $barangays;
     public $barangay;
     public $purok;
@@ -70,7 +69,7 @@ class CreateDogsForm extends Component
             $filename = Null;
         }
 
-        $dogs = Dogs::create([
+        Dogs::create([
             'dog_image' => $filename,
             'dog_name' => $this->dog_name,
             'origin' => $this->origin,
@@ -93,12 +92,9 @@ class CreateDogsForm extends Component
 
     }
 
-
     public function render()
     {
         return view('livewire.create-dogs-form');
     }
-
-
 
 }

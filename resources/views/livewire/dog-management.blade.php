@@ -28,10 +28,13 @@
                             <div><a wire:ignore  href="{{ route('dogs.create') }}" class="btn btn-md btn-success btn-sm-block"><i class="align-middle me-2" data-feather="folder-plus"></i>Register Dogs</a></div>
 
                             @if($allDogs != null)
-                                <div wire:ignore><a wire:click="export" class="btn btn-md btn-info"><i class="align-middle me-1 fa-solid fa-circle-down"></i>Export</a></div>
+                                @if(!$allDogs->isEmpty())
+                                <div>
+                                    <button wire:click="export" wire:loading.attr="disabled" type="button" class="btn btn-md btn-info"><i class="align-middle me-1 fa-solid fa-circle-down"></i>Export</button></div>
                                 <div class="d-flex ms-auto">
                                     <input id="customSearch" type="search" class="form-control mr-2" placeholder="Search">
                                 </div>
+                                    @endif
                             @endif
                         </div>
                     </div>
@@ -70,8 +73,8 @@
                                     <td>{{ $dog->contact_number }}</td>
                                     <td>{{ $dog->barangay->barangay_name }}</td>
                                     <td>
-                                        <button wire:click="edit" class="btn btn-sm btn-info">View</button>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button wire:click="edit({{ $dog->id }})" class="btn btn-sm btn-info">View</button>
+                                        <button wire:ignore wire:click="confirmDelete({{ $dog->id }})"  class="btn btn-sm btn-danger">Delete</button>
                                     </td>
                                 </tr>
                             @endforeach

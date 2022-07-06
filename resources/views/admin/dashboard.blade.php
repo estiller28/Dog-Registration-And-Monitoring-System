@@ -1,11 +1,16 @@
 @extends('layouts.main')
 
-
 @section('content')
 
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">Dashboard</h1>
-        <div class="col-12">
+        <div class="row mb-2 mb-xl-3">
+            <div class="col-auto d-sm-block">
+                <h3><strong>Dashboard</strong> </h3>
+            </div>
         </div>
+
+{{--        Admin Dashboard--}}
+        @livewire('dashboard');
+
     </div>
 @endsection
