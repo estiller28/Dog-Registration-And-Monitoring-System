@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\admin;
 
 use App\Models\Barangay;
 use App\Models\Dogs;
@@ -40,7 +40,7 @@ class DogManagement extends Component
 
     public function render(){
 
-        return view('livewire.dog-management', [
+        return view('livewire.admin.dog-management', [
             'count' => $this->count,
             'allDogs' => $this->allDogs
         ]);
@@ -48,7 +48,6 @@ class DogManagement extends Component
 
 
     public function getDogs(){
-
         $this->validate();
         $this->allDogs = Dogs::with('barangay')->where('barangay_id', $this->barangay)->get();
         $this->count = $this->allDogs->count();

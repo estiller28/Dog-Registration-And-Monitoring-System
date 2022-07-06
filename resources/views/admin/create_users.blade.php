@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                @livewire('create-user-form')
+                @livewire('admin.create-user-form')
 
             </div>
         </div>

@@ -136,7 +136,7 @@
                 {{--                        </div>--}}
                 {{--                    </div>--}}
                 {{--                </div>--}}
-                @livewire('create-dogs-form')
+                @livewire('admin.create-dogs-form')
             </div>
         </div>
     </div>

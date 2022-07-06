@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\admin;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +17,6 @@ class ManageUsers extends Component
 
     public function render()
     {
-        return view('livewire.manage-users');
+        return view('livewire.admin.manage-users');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\admin;
 use App\Models\Barangay;
 use App\Models\User;
 
@@ -56,7 +56,7 @@ class CreateUserForm extends Component
 
     public function render()
     {
-        return view('livewire.create-user-form', [
+        return view('livewire.admin.create-user-form', [
             'user' => $this->user
         ]);
     }

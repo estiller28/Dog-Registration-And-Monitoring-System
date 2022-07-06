@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-body">
 
-                        @livewire('manage-users')
+                        @livewire('admin.manage-users')
 
                     </div>
                 </div>
