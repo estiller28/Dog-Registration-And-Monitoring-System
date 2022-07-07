@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Dogs;
 
 class AdminController extends Controller{
 
@@ -22,6 +23,10 @@ class AdminController extends Controller{
     public function createUsers()
     {
         return view('admin.create_users');
+    }
+
+    public function show(Dogs $dog){
+        return view('admin.dog_edit', compact('dog'));
     }
 
 }

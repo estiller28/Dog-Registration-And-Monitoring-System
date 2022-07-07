@@ -26,6 +26,7 @@ class Dogs extends Model
         'sex_description',
         'vaccines_taken',
         'owner_name',
+        'purok'
     ];
 
     public function barangay(){

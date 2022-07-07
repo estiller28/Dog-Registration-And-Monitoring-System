@@ -2,22 +2,19 @@
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('/dist/css/form.css') }}">
-
-
-
 @endpush
 
 @section('content')
 
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3"><b>Register Dogs</b></h1>
+        <h1 class="h3 mb-3"><b>Dog Profile</b></h1>
         <div class="col-12">
             <div class="card">
                 <div class="card-header border-bottom">
                     <div class="d-flex">
                         <div>
                             <div class="card-title mb-0">
-                                <h4>Add Dog Record
+                                <h4>Update Dog Record
                                 </h4>
                             </div>
                         </div>
@@ -26,25 +23,14 @@
                         </div>
                     </div>
                 </div>
-                @livewire('admin.create-dogs-form')
+
+                @livewire('dog-edit', ['dog' => $dog])
             </div>
         </div>
     </div>
 
-
     @push('js')
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="{{ asset('/dist/js/form.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
-        <script>
-
-            $(document).ready(function () {
-                $('#select2').select2();
-            });
-
-        </script>
-
     @endpush
 
 @endsection

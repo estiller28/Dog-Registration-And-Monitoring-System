@@ -9,8 +9,7 @@
             </div>
         </div>
 
-{{--        Admin Dashboard--}}
-        @livewire('admin.dashboard');
+        @livewire('admin.dashboard')
 
     </div>
 @endsection

@@ -11,7 +11,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="validationCustom02" class="form-label">Name</label>
-                    <input type="text" wire:model="name" class="form-control @error('name') is-invalid @enderror" required aria-describedby="validationServer03Feedback">
+                    <input type="text" wire:model.debounce.500ms="name" class="form-control @error('name') is-invalid @enderror" required aria-describedby="validationServer03Feedback">
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -20,7 +20,7 @@
 
                 <div class="mb-3">
                     <label for="validationCustom02" class="form-label">Email</label>
-                    <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
+                    <input type="email" wire:model.debounce.500ms="email" class="form-control @error('email') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
                     @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -28,7 +28,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="validationCustom02" class="form-label">Password</label>
-                    <input type="password" wire:model="password" class="form-control @error('password') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
+                    <input type="password" wire:model.debounce.500ms="password" class="form-control @error('password') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
                     @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -36,7 +36,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="validationCustom02" class="form-label">Confirm password</label>
-                    <input type="password" wire:model="password_confirmation" class="form-control  @error('password_confirmation') is-invalid @enderror" required aria-describedby="validationServer03Feedback">
+                    <input type="password" wire:model.debounce.500ms="password_confirmation" class="form-control  @error('password_confirmation') is-invalid @enderror" required aria-describedby="validationServer03Feedback">
                     @error('password_confirmation')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

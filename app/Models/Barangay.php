@@ -16,8 +16,7 @@ class Barangay extends Model
     }
 
     public function dogs(){
-        return $this->hasMany(Dogs::class);
+        return $this->hasMany(Dogs::class, 'id', 'barangay_id');
     }
-
 
 }

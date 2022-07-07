@@ -1,27 +1,32 @@
 <div>
     <div class="card-body">
-        <form wire:submit.prevent="create" class=" needs-validation" novalidate>
+        <form wire:submit.prevent="update" class=" needs-validation" novalidate>
             <div class="row g-5 justify-content-between px-lg-2">
                 <div class="col-md-4 mb-4">
                     <div wire:ignore id="placeholder" class="col-md-12 mb-3">
-                        <img class="img-fluid" src="{{ asset('./storage/logo/dog-placeholder.jpg') }}">
+                        @if($dog->dog_image == null)
+                            <img class="img-fluid" src="{{ asset('./storage/logo/dog-placeholder.jpg') }}">
+                        @else
+                            <img class="img-fluid" src="{{ asset('/storage/'. $dog->dog_image)  }}">
+                        @endif
                     </div>
                     <div wire:ignore class="col-md-12">
                         <div id="img-preview"></div>
                     </div>
                     <label for="dog_image" class="form-label">Select image</label>
-                    <input wire:model="dog_image" class="form-control @error('dog_image') is-invalid @enderror" type="file"  accept="image/jpeg" id="image" name="dog_img">
-                    @error('dog_image')
+                    <input wire:model="new_image" class="form-control @error('new_image') is-invalid @enderror" type="file"  accept="image/jpeg" id="image">
+                    @error('new_image')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
                 <div class="col-md-8">
                     <div class="row justify-content-center">
                         <div class="col-md-6 mb-4 border-">
                             <h4 class="mb-4"><strong>1. Dog Information</strong></h4>
-                            <div class="mb-3">
+                            <div wire:ignore class="mb-3">
                                 <label for="dog_image" class="form-label">Dog Name</label>
-                                <input type="text" wire:model="dog_name" class="form-control  @error('dog_name') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
+                                <input type="text" wire:model="dog_name"  class="form-control  @error('dog_name') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
                                 @error('dog_name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -143,21 +148,23 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="currentPurok" class="form-label">Purok</label>
+                                <label for="purok" class="form-label">Purok</label>
                                 <input wire:model="purok" type="text" class="form-control @error('purok') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
                                 @error('purok')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="d-flex justify-content-between px-lg-2">
                 <div class="mr-2"></div>
                 <div class="d-flex gap-2">
-                    <button type="submit"  class="btn btn-outline-dark btn-sm-block"><i class="align-middle me-1" data-feather="x"></i>Cancel</button>
-                    <button type="submit"  class="btn btn-primary btn-sm-block"><i class="align-middle me-1" data-feather="folder-plus"></i>Register</button>
+                    <button type="button"  class="btn btn-outline-dark btn-sm-block"><i class="align-middle me-1" data-feather="x"></i>Cancel</button>
+                    <button type="submit"  class="btn btn-info btn-sm-block"><i class="align-middle me-1" data-feather="folder-plus"></i>Update</button>
                 </div>
             </div>
         </form>

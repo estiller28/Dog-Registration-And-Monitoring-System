@@ -70,6 +70,7 @@
 
 
 <script type="text/javascript">
+
     window.addEventListener('swal:confirm', event => {
         swal.fire({
             title: event.detail.title,

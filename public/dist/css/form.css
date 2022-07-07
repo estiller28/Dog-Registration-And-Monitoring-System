@@ -1,0 +1,14 @@
+.preview{
+    display: block;
+}
+#img-preview {
+    display: none;
+    width: 500px;
+    border: 4px dashed #3B7DDD;
+    margin-bottom: 20px;
+}
+#img-preview img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

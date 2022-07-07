@@ -54,8 +54,8 @@ class DogManagement extends Component
     }
 
     public function getAllDogs(){
-        $id = $this->allDogs->pluck('barangay_id');
 
+        $id = $this->allDogs->pluck('barangay_id');
         return $id->all();
     }
 
@@ -68,7 +68,6 @@ class DogManagement extends Component
     }
 
     public function confirmDelete($id){
-
         $this->dispatchBrowserEvent('swal:confirm', [
             'type' => 'warning',
             'title' => 'Are you sure?',
@@ -81,6 +80,7 @@ class DogManagement extends Component
         Dogs::where('id', $id)->delete();
         $this->getDogs();
     }
+
 
 
 }

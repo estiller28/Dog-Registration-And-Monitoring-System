@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\admin;
-
+namespace App\Http\Livewire;
 use App\Models\Barangay;
 use App\Models\Dogs;
-use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use phpDocumentor\Reflection\Types\Null_;
 
-class CreateDogsForm extends Component
+class DogEdit extends Component
 {
     use WithFileUploads;
 
@@ -16,6 +15,7 @@ class CreateDogsForm extends Component
     public $barangay;
     public $purok;
     public $dog_name;
+    public $new_image;
     public $id_number;
     public $dog_image;
     public $origin;
@@ -27,20 +27,14 @@ class CreateDogsForm extends Component
     public $vaccines_taken;
     public $owner_name;
     public $contact_number;
-
     public $dogs;
 
-    public $selectData = '';
-
-
-    public $sexValue = [
-        '1' => 'Capon',
-        '2' => 'Ligate'
-    ];
+    public Dogs $dog;
+    public $did;
 
     protected $rules = [
         'dog_name' => 'required',
-        'dog_image' => 'max:2048',
+        'new_image' => 'max:2048',
         'origin' => 'required',
         'breed'  => 'required',
         'color' => 'required',
@@ -59,28 +53,46 @@ class CreateDogsForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function mount(){
+
+
+    public function mount($dog){
+        $this->dog = $dog;
+        $this->did  = $dog->id;
+        $this->dog_image = $dog->image;
+        $this->dog_name = $dog->dog_name;
+        $this->origin = $dog->origin;
+        $this->breed = $dog->breed;
+        $this->color = $dog->color;
+        $this->age = $dog->age;
+        $this->sex = $dog->sex;
+        $this->sex_description = $dog->sex_description;
+        $this->vaccines_taken = $dog->vaccines_taken;
+        $this->owner_name = $dog->owner_name;
+        $this->contact_number = $dog->contact_number;
+        $this->barangay  = $dog->barangay_id;
+        $this->purok = $dog->purok;
         $this->barangays = Barangay::orderBy('barangay_name', 'asc')->get();
     }
+    public function render()
+    {
+        return view('livewire.dog-edit');
+    }
 
+    public function update(){
 
-    public function create(){
         $this->validate();
 
-        $filename = "";
-        if ($this->dog_image) {
-            $filename = $this->dog_image->store('dog-images', 'public');
-        } else {
-            $filename = Null;
+        $filename = $this->dog->dog_image;
+        if ($this->new_image) {
+            $filename = $this->new_image->store('dog-images', 'public');
         }
 
-        Dogs::create([
+        Dogs::find($this->did)->update([
             'dog_image' => $filename,
             'dog_name' => $this->dog_name,
             'origin' => $this->origin,
             'breed' => $this->breed,
             'color' => $this->color,
-            'age' => $this->age,
             'sex' => $this->sex,
             'sex_description' => $this->sex_description,
             'vaccines_taken' => $this->vaccines_taken,
@@ -88,20 +100,10 @@ class CreateDogsForm extends Component
             'contact_number' => $this->contact_number,
             'barangay_id' => $this->barangay,
             'purok' => $this->purok,
-            'id_number' => strtoupper(substr($this->dog_name, 0, 3)). '-' .substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 6)
         ]);
 
-        session()->flash('message', 'Dog registered succesfully.');
+        session()->flash('message', 'Dog updated succesfully.');
 
         return redirect()->route('dogs.index');
-
     }
-
-
-
-    public function render()
-    {
-        return view('livewire.admin.create-dogs-form');
-    }
-
 }

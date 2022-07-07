@@ -62,18 +62,17 @@
                             @foreach($allDogs as $dog)
                                 <tr>
                                     <td>{{ $dog->id_number }}</td>
-                                    @if($dog->dog_image)
-                                        <td><img src="{{ asset('/storage/'. $dog->dog_image)  }}"  style="width: 50px; border-radius: 10px; height: 50px;"></td>
-                                    @else
+                                    @if($dog->dog_image === null)
                                         <td><img class="img-fluid" src="{{ asset('./storage/logo/dog-placeholder.jpg') }}" style="width: 50px; border-radius: 10px; height: 50px;"></td>
+                                    @else
+                                        <td><img src="{{ asset('/storage/'. $dog->dog_image)  }}"  style="width: 50px; border-radius: 10px; height: 50px;"></td>
                                     @endif
-
                                     <td>{{ $dog->dog_name}}</td>
                                     <td>{{ $dog->owner_name }}</td>
                                     <td>{{ $dog->contact_number }}</td>
                                     <td>{{ $dog->barangay->barangay_name }}</td>
                                     <td>
-                                        <button wire:click="edit({{ $dog->id }})" class="btn btn-sm btn-info">View</button>
+                                        <a href="{{ url('admin/dog/edit/'. $dog->id) }}" class="btn btn-sm btn-info">View</a>
                                         <button wire:ignore wire:click="confirmDelete({{ $dog->id }})"  class="btn btn-sm btn-danger">Delete</button>
                                     </td>
                                 </tr>

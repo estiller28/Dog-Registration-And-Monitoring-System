@@ -17,7 +17,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h1 class="mt-1 mb-3">10</h1>
+                                <h1 class="mt-1 mb-3">{{ $dogRegistered }}</h1>
                                 <div class="row">
                                     <div class="col mb-0">
                                         <button class="btn btn-outline-dark"><i class="align-middle me-1" data-feather="eye"></i>View</button>
@@ -26,7 +26,6 @@
                                         <button class="btn btn-info"><i class="align-middle me-1" data-feather="download"></i>Export</button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="card">
@@ -42,7 +41,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h1 class="mt-1 mb-3">60</h1>
+                                <h1 class="mt-1 mb-3">{{ $allUsers }}</h1>
                                 <div class="mb-0">
                                     <button class="btn btn-outline-dark"><i class="align-middle me-1" data-feather="eye"></i>View</button>
                                 </div>
