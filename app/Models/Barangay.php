@@ -9,6 +9,11 @@ class Barangay extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::addGlobalScope(fn ($query) => $query->orderBy('barangay_name'));
+    }
+
     protected $fillable = ['barangay_name'];
 
     public function users(){

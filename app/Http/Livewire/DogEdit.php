@@ -102,8 +102,9 @@ class DogEdit extends Component
             'purok' => $this->purok,
         ]);
 
-        session()->flash('message', 'Dog updated succesfully.');
-
-        return redirect()->route('dogs.index');
+        $this->dispatchBrowserEvent('toastr:info', [
+            'type' => 'info',
+            'message' => 'Dog record updated successfully',
+        ]);
     }
 }

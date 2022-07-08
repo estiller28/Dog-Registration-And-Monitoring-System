@@ -13,7 +13,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom">
-                        <h4>All Users</h4>
+                        <div class="">
+                            <i class="align-middle" data-feather="users"></i> <span class="align-middle fs-4">Users</span>
+                        </div>
                     </div>
                     <div class="card-body">
 
@@ -32,6 +34,37 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+
+        <script>
+            function renderTable() {
+                myTable = $('#myTable').DataTable({
+                    "responsive": false, "autoWidth": true, "scrollX": true, "pageLength": 10, "lengthChange": false,
+                    "search": {
+                        "caseInsensitive": true,
+                    },
+                    "": false,
+                    "columnDefs": [{
+                        "className": "dt-left",
+                        "targets": "_all"
+                    }
+                    ],
+                    "dom": "lrtip" //t
+
+                });
+            }
+
+
+
+            document.addEventListener("DOMContentLoaded", () => {
+                Livewire.hook('message.received', (message, component) => {
+                    $('#myTable').DataTable().destroy();
+                })
+
+                Livewire.hook('message.processed', (message, component) => {
+                    renderTable();
+                })
+            });
+        </script>
     @endpush
 
 @endsection

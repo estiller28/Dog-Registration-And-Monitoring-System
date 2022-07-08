@@ -11,7 +11,6 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->group(function() {
-
     //RoleChecker
     Route::get('/dashboard', [RoleCheckerController::class, 'roleCheck']);
 
@@ -25,9 +24,7 @@ Route::middleware(['auth'])->group(function() {
             Route::get('user/create', [AdminController::class, 'createUsers'])->name('user.create');
             Route::get('/manage/users', [AdminController::class, 'manageUsers'])->name('users.index');
 
-
             // Edit
-
             Route::get('/dog/edit/{dog}', [AdminController::class, 'show'])->name('dog.edit');
         });
     });

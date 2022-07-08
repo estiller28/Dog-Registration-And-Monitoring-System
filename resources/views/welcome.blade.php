@@ -91,8 +91,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 text-center text-lg-start">
-                    <h3>Online Tracking of Dogs</h3>
-                    <p>This website will provide an access to public to track or search dog informations.</p>
+                    <h3>
+                       Online viewing of owned dog informations
+                    </h3>
+                    <p>  This website will provide an access to public to search dogs and view  their informations.</p>
                 </div>
                 <div class="col-lg-3 cta-btn-container text-center">
                 </div>
@@ -104,7 +106,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Search Dogs</h2>
-                <p class="text-dark">In this section, you will be able to track dogs information should you found missing dogs in anywhere you are.
+                <p class="text-dark">In this section, you will be able to search dog informations should you found missing dogs in anywhere you are.
                     Simply provide the dog ID number and you'll see results in seconds.</p>
             </div>
 

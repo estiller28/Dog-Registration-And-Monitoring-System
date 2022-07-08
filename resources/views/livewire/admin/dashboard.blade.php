@@ -20,10 +20,7 @@
                                 <h1 class="mt-1 mb-3">{{ $dogRegistered }}</h1>
                                 <div class="row">
                                     <div class="col mb-0">
-                                        <button class="btn btn-outline-dark"><i class="align-middle me-1" data-feather="eye"></i>View</button>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button class="btn btn-info"><i class="align-middle me-1" data-feather="download"></i>Export</button>
+                                        <a href="{{ route('dogs.index') }}" class="btn btn-outline-dark"><i class="align-middle me-1" data-feather="eye"></i>View</a>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +40,7 @@
                                 </div>
                                 <h1 class="mt-1 mb-3">{{ $allUsers }}</h1>
                                 <div class="mb-0">
-                                    <button class="btn btn-outline-dark"><i class="align-middle me-1" data-feather="eye"></i>View</button>
+                                    <a href="{{ route('users.index') }}" class="btn btn-outline-dark"><i class="align-middle me-1" data-feather="eye"></i>View</a>
                                 </div>
                             </div>
                         </div>

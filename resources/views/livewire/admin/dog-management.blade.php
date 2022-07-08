@@ -3,10 +3,14 @@
         <div class="card">
             <div class="card-header border-bottom">
                 <div class="d-flex">
-                    <div>
-                        <div class="card-title mb-0">
-                            <h4> <span class="badge bg-success text-lg">{{ $count }}</span> Registered Dogs</h4>
-                        </div>
+                    <div class="mb-0">
+                        @if($count)
+                            <span class="badge bg-success text-lg">{{ $count }}</span> <span class="align-middle fs-4">Registered Dogs</span>
+                        @else
+                            <div class="">
+                                <i class="align-middle" data-feather="database"></i> <span class="align-middle fs-4">Registered Dogs</span>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -17,6 +21,7 @@
                         <div wire:ignore class="col-md-3 col-xs-3" >
                             <select wire:model.defer="barangay" class="form-select">
                                 <option selected="selected" value="">-Select barangay- </option>
+                                <option value="0">All Barangay</option>
                                 @foreach($dogs as $dog)
                                     <option value="{{ $dog->id }}">{{ $dog->barangay_name }}</option>
                                 @endforeach
@@ -29,12 +34,12 @@
 
                             @if($allDogs != null)
                                 @if(!$allDogs->isEmpty())
-                                <div>
-                                    <button wire:click="export" wire:loading.attr="disabled" type="button" class="btn btn-md btn-info"><i class="align-middle me-1 fa-solid fa-circle-down"></i>Export</button></div>
-                                <div class="d-flex ms-auto">
-                                    <input id="customSearch" type="search" class="form-control mr-2" placeholder="Search">
-                                </div>
-                                    @endif
+                                    <div>
+                                        <button wire:click="export" wire:loading.attr="disabled" type="button" class="btn btn-md btn-info"><i class="align-middle me-1 fa-solid fa-circle-down"></i>Export</button></div>
+                                    <div class="d-flex ms-auto">
+                                        <input id="customSearch" type="search" class="form-control mr-2" placeholder="Search">
+                                    </div>
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -50,6 +55,7 @@
                             <thead style="background: #D0C9C0; ">
                             <tr>
                                 <th>ID Number</th>
+                                <th>Date Registered</th>
                                 <th>Dog Image</th>
                                 <th>Dog Name</th>
                                 <th>Owner's Name</th>
@@ -62,6 +68,7 @@
                             @foreach($allDogs as $dog)
                                 <tr>
                                     <td>{{ $dog->id_number }}</td>
+                                    <td>{{ Carbon\Carbon::parse($dog->created_at)->toFormattedDateString() }}</td>
                                     @if($dog->dog_image === null)
                                         <td><img class="img-fluid" src="{{ asset('./storage/logo/dog-placeholder.jpg') }}" style="width: 50px; border-radius: 10px; height: 50px;"></td>
                                     @else

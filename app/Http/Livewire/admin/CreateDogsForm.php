@@ -91,12 +91,14 @@ class CreateDogsForm extends Component
             'id_number' => strtoupper(substr($this->dog_name, 0, 3)). '-' .substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 6)
         ]);
 
-        session()->flash('message', 'Dog registered succesfully.');
 
-        return redirect()->route('dogs.index');
+        $this->dispatchBrowserEvent('toastr:info', [
+            'type' => 'success',
+            'message' => 'Dog record created successfully',
+        ]);
 
+        $this->resetExcept('barangays');
     }
-
 
 
     public function render()

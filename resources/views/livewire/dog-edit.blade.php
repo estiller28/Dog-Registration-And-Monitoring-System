@@ -24,7 +24,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6 mb-4 border-">
                             <h4 class="mb-4"><strong>1. Dog Information</strong></h4>
-                            <div wire:ignore class="mb-3">
+                            <div class="mb-3">
                                 <label for="dog_image" class="form-label">Dog Name</label>
                                 <input type="text" wire:model="dog_name"  class="form-control  @error('dog_name') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
                                 @error('dog_name')
@@ -153,7 +153,6 @@
                                 @error('purok')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-
                             </div>
                         </div>
                     </div>

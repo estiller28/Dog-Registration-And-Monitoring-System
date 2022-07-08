@@ -11,6 +11,9 @@ class ManageUsers extends Component
 
     public $users;
 
+
+    protected $listeners = ['delete'];
+
     public function mount(){
         $this->users = User::with('barangay')->where('id', '!=', Auth::user()->id )->get();
     }
@@ -18,5 +21,20 @@ class ManageUsers extends Component
     public function render()
     {
         return view('livewire.admin.manage-users');
+    }
+
+    public function confirmDelete($id){
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'type' => 'warning',
+            'title' => 'Are you sure?',
+            'text' => 'sasa',
+            'id' => $id,
+        ]);
+    }
+
+    public function delete($id){
+
+        User::find($id)->delete();
+        $this->mount();
     }
 }

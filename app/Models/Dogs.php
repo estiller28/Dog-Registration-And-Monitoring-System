@@ -30,6 +30,6 @@ class Dogs extends Model
     ];
 
     public function barangay(){
-        return $this->belongsTo(Barangay::class, 'barangay_id', 'id')->withDefault();
+        return $this->belongsTo(Barangay::class, 'barangay_id', 'id')->orderBy('barangay_name');
     }
 }

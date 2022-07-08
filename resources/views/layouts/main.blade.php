@@ -13,10 +13,10 @@
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
     <title></title>
     @livewireStyles
-{{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
+    {{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-{{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">--}}
+    {{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">--}}
     @stack('css')
     <link href="{{ asset('dist/css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -45,28 +45,53 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 @stack('js')
-<script type="text/javascript">
-    @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info') }}"
-    toastr.options.progressBar = true;
-    switch (type){
-        case 'info':
-            toastr.info("{{Session::get('message')}}");
-            break;
 
-        case 'success':
-            toastr.success("{{Session::get('message')}}");
 
-            break;
-        case 'warning':
-            toastr.warning("{{Session::get('message')}}");
-            break;
-        case 'error':
-            toastr.error("{{Session::get('message')}}");
-            break;
-    }
-    @endif
+<script>
+    window.addEventListener('toastr:info', event => {
+        var type = "{{ Session::get('type', 'info') }}"
+
+        toastr.options.progressBar = true;
+        switch (type){
+            case 'info':
+                toastr.info(event.detail.message);
+                break;
+            case 'succes':
+                toastr.succes(event.detail.message);
+                break;
+            case 'warning':
+                toastr.warning(event.detail.message);
+                break;
+            case 'error':
+                toastr.error(event.detail.message);
+                break;
+        }
+    });
 </script>
+
+
+{{--<script type="text/javascript">--}}
+{{--    @if(Session::has('message'))--}}
+{{--    var type = "{{ Session::get('alert-type', 'info') }}"--}}
+{{--    toastr.options.progressBar = true;--}}
+{{--    switch (type){--}}
+{{--        case 'info':--}}
+{{--            toastr.info("{{Session::get('message')}}");--}}
+{{--            break;--}}
+
+{{--        case 'success':--}}
+{{--            toastr.success("{{Session::get('message')}}");--}}
+
+{{--            break;--}}
+{{--        case 'warning':--}}
+{{--            toastr.warning("{{Session::get('message')}}");--}}
+{{--            break;--}}
+{{--        case 'error':--}}
+{{--            toastr.error("{{Session::get('message')}}");--}}
+{{--            break;--}}
+{{--    }--}}
+{{--    @endif--}}
+{{--</script>--}}
 
 
 <script type="text/javascript">
@@ -85,11 +110,11 @@
             if (result.isConfirmed) {
 
                 window.livewire.emit('delete', event.detail.id);
-                Swal.fire(
-                    'Deleted!',
-                    'Dog record has been deleted.',
-                    'success'
-                )
+                Swal.fire({
+                    title: event.detail.title,
+                    text: event.detail.text,
+                    icon: event.detail.type,
+                })
             }
         });
     });

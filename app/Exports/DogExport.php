@@ -53,8 +53,11 @@ class DogExport implements FromCollection, WithHeadings, WithEvents,WithMapping
 
     public function collection()
     {
-        return Dogs::with('barangay')
-            ->where('barangay_id', $this->id)->get();
+        if($this->id == 0){
+            return Dogs::with('barangay')->get();
+        }else{
+            return Dogs::with('barangay')->where('barangay_id', $this->id)->get();
+        }
     }
 
     public function registerEvents(): array

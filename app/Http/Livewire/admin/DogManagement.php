@@ -49,19 +49,33 @@ class DogManagement extends Component
 
     public function getDogs(){
         $this->validate();
-        $this->allDogs = Dogs::with('barangay')->where('barangay_id', $this->barangay)->get();
-        $this->count = $this->allDogs->count();
+
+        if($this->barangay == '0'){
+            $this->allDogs = Dogs::with('barangay')->get();
+            $this->count = $this->allDogs->count();
+        }else{
+            $this->allDogs = Dogs::with('barangay')->where('barangay_id', $this->barangay)->get();
+            $this->count = $this->allDogs->count();
+        }
+
     }
 
     public function getAllDogs(){
 
-        $id = $this->allDogs->pluck('barangay_id');
-        return $id->all();
+        if($this->barangay == '0'){
+            $id = 0;
+            return $id;
+        }else{
+            $id = $this->allDogs->pluck('barangay_id');
+            return $id->all();
+        }
+
     }
 
     public function export(){
 
         if($this->allDogs->isNotEmpty()) {
+
             return Excel::download(new DogExport($this->getAllDogs()), 'All-Dogs.xlsx');
         }
 
@@ -78,6 +92,8 @@ class DogManagement extends Component
 
     public function delete($id){
         Dogs::where('id', $id)->delete();
+
+
         $this->getDogs();
     }
 
