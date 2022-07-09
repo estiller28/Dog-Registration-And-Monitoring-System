@@ -110,11 +110,11 @@
             if (result.isConfirmed) {
 
                 window.livewire.emit('delete', event.detail.id);
-                Swal.fire({
-                    title: event.detail.title,
-                    text: event.detail.text,
-                    icon: event.detail.type,
-                })
+                // Swal.fire({
+                //     title: event.detail.title,
+                //     text: event.detail.text,
+                //     icon: event.detail.type,
+                // })
             }
         });
     });

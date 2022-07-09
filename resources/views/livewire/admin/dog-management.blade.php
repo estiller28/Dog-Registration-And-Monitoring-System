@@ -16,16 +16,19 @@
             </div>
 
             <div class="card-body">
-                <form wire:submit.prevent="getDogs">
+                <form wire:submit.prevent="getDogs" class=" needs-validation" novalidate>
                     <div class="row d-flex mb-3">
-                        <div wire:ignore class="col-md-3 col-xs-3" >
-                            <select wire:model.defer="barangay" class="form-select">
+                        <div class="col-md-3 col-xs-3" >
+                            <select wire:model="barangay" class="form-select @error('barangay') is-invalid @enderror"  aria-describedby="validationServer04Feedback" required>
                                 <option selected="selected" value="">-Select barangay- </option>
                                 <option value="0">All Barangay</option>
                                 @foreach($dogs as $dog)
                                     <option value="{{ $dog->id }}">{{ $dog->barangay_name }}</option>
                                 @endforeach
                             </select>
+                            @error('barangay')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-md-9 d-flex gap-2 flex-wrap">

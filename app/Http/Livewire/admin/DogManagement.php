@@ -27,6 +27,12 @@ class DogManagement extends Component
 
     ];
 
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+
     public $readyToLoad = false;
 
     public function loadDogs()
@@ -48,8 +54,8 @@ class DogManagement extends Component
 
 
     public function getDogs(){
-        $this->validate();
 
+        $this->validate();
         if($this->barangay == '0'){
             $this->allDogs = Dogs::with('barangay')->get();
             $this->count = $this->allDogs->count();
@@ -91,7 +97,7 @@ class DogManagement extends Component
     }
 
     public function delete($id){
-        Dogs::where('id', $id)->delete();
+        Dogs::find($id)->delete();
 
 
         $this->getDogs();
