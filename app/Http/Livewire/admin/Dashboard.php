@@ -18,7 +18,7 @@ class Dashboard extends Component
     }
 
     public function mount(){
-        $this->recentlyAdded = Dogs::with('barangay')->latest()->limit(5)->get();
+        $this->recentlyAdded = Dogs::with('barangay')->latest()->limit(3)->get();
         $this->dogRegistered = Dogs::count();
         $this->allUsers = User::where('id', '!=', 1)->count();
     }

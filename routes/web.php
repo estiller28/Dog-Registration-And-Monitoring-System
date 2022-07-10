@@ -21,12 +21,12 @@ Route::middleware(['auth'])->group(function() {
             Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
             Route::get('/dogs', [AdminController::class, 'manageDogs'])->name('dogs.index');
             Route::get('/dogs/create', [AdminController::class, 'dogsCreate'])->name('dogs.create');
+            Route::get('/dog/edit/{dog}', [AdminController::class, 'show'])->name('dog.edit');
             Route::get('user/create', [AdminController::class, 'createUsers'])->name('user.create');
             Route::get('/manage/users', [AdminController::class, 'manageUsers'])->name('users.index');
             Route::get('/user/edit/{user}', [AdminController::class, 'editUser'])->name('user.edit');
+            Route::get('/profile', [AdminController::class, 'userProfile'])->name('user.profile');
 
-            // Edit
-            Route::get('/dog/edit/{dog}', [AdminController::class, 'show'])->name('dog.edit');
         });
     });
 

@@ -32,5 +32,8 @@ class AdminController extends Controller{
     public function editUser(User $user){
         return view('admin.user_edit', compact('user'));
     }
+    public function userProfile(){
+        return view('admin.user_profile');
+    }
 
 }

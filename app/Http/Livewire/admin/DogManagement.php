@@ -18,6 +18,7 @@ class DogManagement extends Component
     public $dogs;
     public $allDogs;
     public $count;
+    public $dog;
 
 
     protected $listeners = ['delete'];
@@ -143,7 +144,6 @@ class DogManagement extends Component
             $id = $this->allDogs->pluck('barangay_id');
             return $id->all();
         }
-
     }
 
     public function export(){
@@ -164,8 +164,18 @@ class DogManagement extends Component
     }
 
     public function delete($id){
-        Dogs::find($id)->delete();
+        $dog = Dogs::find($id)->first();
 
+        $path = "/storage/";
+        if($dog->dog_image != null){
+            $filename = $dog->dog_image;
+            if(\File::exists(public_path($path.$filename))) {
+                \File::delete(public_path($path.$filename));
+            }
+            $dog->delete();
+        }
+
+        $dog->delete();
         $this->dispatchBrowserEvent('toastr:info', [
             'type' => 'info',
             'message' => 'Dog deleted successfully',
@@ -173,7 +183,4 @@ class DogManagement extends Component
 
         $this->getDogs();
     }
-
-
-
 }
