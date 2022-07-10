@@ -3,10 +3,10 @@
 namespace App\Http\Livewire;
 use App\Models\Barangay;
 use App\Models\Dogs;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use phpDocumentor\Reflection\Types\Null_;
-
+use Illuminate\Http\File;
 class DogEdit extends Component
 {
     use WithFileUploads;
@@ -44,7 +44,7 @@ class DogEdit extends Component
         'sex_description' => 'required',
         'vaccines_taken' => 'required',
         'owner_name' => 'required',
-        'contact_number' => 'required|max:11',
+        'contact_number' => 'required|min:10|max:11',
         'purok' => 'required',
     ];
 
@@ -52,8 +52,6 @@ class DogEdit extends Component
     {
         $this->validateOnly($propertyName);
     }
-
-
 
     public function mount($dog){
         $this->dog = $dog;
@@ -81,9 +79,15 @@ class DogEdit extends Component
     public function update(){
 
         $this->validate();
-
+        $path = "/storage/";
         $filename = $this->dog->dog_image;
+
         if ($this->new_image) {
+            if($filename !== ''){
+                if(\File::exists(public_path($path.$filename))) {
+                    \File::delete(public_path($path.$filename));
+                }
+            }
             $filename = $this->new_image->store('dog-images', 'public');
         }
 
@@ -103,7 +107,7 @@ class DogEdit extends Component
         ]);
 
         $this->dispatchBrowserEvent('toastr:info', [
-            'type' => 'info',
+            'type' => 'success',
             'message' => 'Dog record updated successfully',
         ]);
     }

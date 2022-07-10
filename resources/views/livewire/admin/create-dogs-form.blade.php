@@ -156,8 +156,8 @@
             <div class="d-flex justify-content-between px-lg-2">
                 <div class="mr-2"></div>
                 <div class="d-flex gap-2">
-                    <button type="submit"  class="btn btn-outline-dark btn-sm-block"><i class="align-middle me-1" data-feather="x"></i>Cancel</button>
-                    <button type="submit"  class="btn btn-primary btn-sm-block"><i class="align-middle me-1" data-feather="folder-plus"></i>Register</button>
+                    <button type="submit"  class="btn btn-light btn-sm-block">Cancel</button>
+                    <button type="submit"  class="btn btn-primary btn-sm-block">Register</button>
                 </div>
             </div>
         </form>

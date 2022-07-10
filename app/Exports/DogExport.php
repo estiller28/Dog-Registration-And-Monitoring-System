@@ -2,12 +2,14 @@
 
 namespace App\Exports;
 
+use App\Models\Barangay;
 use App\Models\Dogs;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Illuminate\Support\Facades\DB;
 
 class DogExport implements FromCollection, WithHeadings, WithEvents,WithMapping
 {
@@ -37,7 +39,7 @@ class DogExport implements FromCollection, WithHeadings, WithEvents,WithMapping
     public function map($dog): array{
 
         return [
-            $dog->barangay->barangay_name,
+            $dog->barangay_name,
             $dog->dog_name,
             $dog->id_number,
             $dog->owner_name,
@@ -54,9 +56,15 @@ class DogExport implements FromCollection, WithHeadings, WithEvents,WithMapping
     public function collection()
     {
         if($this->id == 0){
-            return Dogs::with('barangay')->get();
+            return  Barangay::select('*')
+                ->join('dogs', 'barangays.id', '=', 'dogs.barangay_id')
+                ->orderBy('barangays.barangay_name', 'asc')
+                ->get();
+
         }else{
-            return Dogs::with('barangay')->where('barangay_id', $this->id)->get();
+            return  Barangay::where('dogs.barangay_id', $this->id)
+                ->join('dogs', 'barangays.id', '=', 'dogs.barangay_id')
+                ->get();
         }
     }
 
@@ -90,8 +98,8 @@ class DogExport implements FromCollection, WithHeadings, WithEvents,WithMapping
 
                 //cell-width
                 $event->sheet->getDelegate()->getColumnDimension('A')->setWidth(40);
-                $event->sheet->getDelegate()->getColumnDimension('B')->setWidth(20);
-                $event->sheet->getDelegate()->getColumnDimension('C')->setWidth(20);
+                $event->sheet->getDelegate()->getColumnDimension('B')->setWidth(30);
+                $event->sheet->getDelegate()->getColumnDimension('C')->setWidth(30);
                 $event->sheet->getDelegate()->getColumnDimension('D')->setWidth(30);
                 $event->sheet->getDelegate()->getColumnDimension('E')->setWidth(30);
                 $event->sheet->getDelegate()->getColumnDimension('F')->setWidth(30);

@@ -38,6 +38,15 @@ div.dataTables_filter, div.dataTables_length {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
 
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: none;
+    color: black!important;
+}
+
+
+
+
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     border:  0.1px solid gray !important
 }

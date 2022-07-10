@@ -40,24 +40,28 @@
 @livewireScripts
 <script src="{{ asset('dist/js/app.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 @stack('js')
 
-
 <script>
     window.addEventListener('toastr:info', event => {
-        var type = "{{ Session::get('type', 'info') }}"
+        var type = event.detail.type;
 
         toastr.options.progressBar = true;
         switch (type){
             case 'info':
                 toastr.info(event.detail.message);
+
+                const imgPreview = document.getElementById("img-preview");
+                const placeHolder = document.getElementById("placeholder");
+                imgPreview.style.display = "none";
+                placeHolder.style.display = "block";
+
                 break;
-            case 'succes':
-                toastr.succes(event.detail.message);
+            case 'success':
+                toastr.success(event.detail.message);
                 break;
             case 'warning':
                 toastr.warning(event.detail.message);
@@ -66,60 +70,38 @@
                 toastr.error(event.detail.message);
                 break;
         }
+
     });
 </script>
 
-
-{{--<script type="text/javascript">--}}
-{{--    @if(Session::has('message'))--}}
-{{--    var type = "{{ Session::get('alert-type', 'info') }}"--}}
-{{--    toastr.options.progressBar = true;--}}
-{{--    switch (type){--}}
-{{--        case 'info':--}}
-{{--            toastr.info("{{Session::get('message')}}");--}}
-{{--            break;--}}
-
-{{--        case 'success':--}}
-{{--            toastr.success("{{Session::get('message')}}");--}}
-
-{{--            break;--}}
-{{--        case 'warning':--}}
-{{--            toastr.warning("{{Session::get('message')}}");--}}
-{{--            break;--}}
-{{--        case 'error':--}}
-{{--            toastr.error("{{Session::get('message')}}");--}}
-{{--            break;--}}
-{{--    }--}}
-{{--    @endif--}}
-{{--</script>--}}
-
-
+<style>
+    #toast-container > .toast-custom {
+        background-color: orange !important;
+    }
+</style>
 <script type="text/javascript">
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}"
+    toastr.options.progressBar = true;
+    switch (type){
+        case 'info':
+            toastr.info("{{Session::get('message')}}", {
+                "iconClass": "toast-custom";
+            });
+            break;
 
-    window.addEventListener('swal:confirm', event => {
-        swal.fire({
-            title: event.detail.title,
-            text: event.detail.text,
-            icon: event.detail.type,
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+        case 'success':
+            toastr.success("{{Session::get('message')}}");
 
-        }) .then((result) => {
-            if (result.isConfirmed) {
-
-                window.livewire.emit('delete', event.detail.id);
-                // Swal.fire({
-                //     title: event.detail.title,
-                //     text: event.detail.text,
-                //     icon: event.detail.type,
-                // })
-            }
-        });
-    });
+            break;
+        case 'warning':
+            toastr.warning("{{Session::get('message')}}");
+            break;
+        case 'error':
+            toastr.error("{{Session::get('message')}}");
+            break;
+    }
+    @endif
 </script>
-
-
 </body>
 </html>

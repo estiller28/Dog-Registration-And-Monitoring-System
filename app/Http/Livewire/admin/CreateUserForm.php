@@ -47,6 +47,7 @@ class CreateUserForm extends Component
         ]);
 
         $user->assignRole('CoAdmin');
+
         session()->flash('message', 'User created succesfully.');
 
         return redirect()->route('users.index');

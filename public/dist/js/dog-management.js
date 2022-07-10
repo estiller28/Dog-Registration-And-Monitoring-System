@@ -32,3 +32,27 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTable();
     })
 });
+
+
+window.addEventListener('swal:confirm', event => {
+    swal.fire({
+        title: event.detail.title,
+        text: event.detail.text,
+        icon: event.detail.type,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+
+    }) .then((result) => {
+        if (result.isConfirmed) {
+
+            window.livewire.emit('delete', event.detail.id);
+            // Swal.fire({
+            //     title: event.detail.title,
+            //     text: event.detail.text,
+            //     icon: event.detail.type,
+            // })
+        }
+    });
+});

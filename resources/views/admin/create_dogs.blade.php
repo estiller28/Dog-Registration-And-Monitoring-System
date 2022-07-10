@@ -3,8 +3,6 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('/dist/css/form.css') }}">
 
-
-
 @endpush
 
 @section('content')
@@ -15,11 +13,8 @@
             <div class="card">
                 <div class="card-header border-bottom">
                     <div class="d-flex">
-                        <div>
-                            <div class="card-title mb-0">
-                                <h4>Add Dog Record
-                                </h4>
-                            </div>
+                        <div class="">
+                            <i class="align-middle" data-feather="save"></i> <span class="align-middle fs-4">Add dog record</span>
                         </div>
                         <div class="d-flex ms-auto">
                             <a href="{{ route('dogs.index') }}" class="btn btn-primary" ><i class="align-middle me-1" data-feather="arrow-left"></i>Back</a>

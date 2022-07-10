@@ -8,11 +8,13 @@ use Livewire\Component;
 
 class ManageUsers extends Component
 {
-
     public $users;
-
-
     protected $listeners = ['delete'];
+
+    public $readyToLoad = false;
+    public function loadUsers(){
+        $this->readyToLoad = true;
+    }
 
     public function mount(){
         $this->users = User::with('barangay')->where('id', '!=', Auth::user()->id )->get();
@@ -27,7 +29,7 @@ class ManageUsers extends Component
         $this->dispatchBrowserEvent('swal:confirm', [
             'type' => 'warning',
             'title' => 'Are you sure?',
-            'text' => 'sasa',
+            'text' => '',
             'id' => $id,
         ]);
     }

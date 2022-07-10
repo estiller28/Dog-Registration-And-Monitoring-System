@@ -53,8 +53,6 @@
                 });
             }
 
-
-
             document.addEventListener("DOMContentLoaded", () => {
                 Livewire.hook('message.received', (message, component) => {
                     $('#myTable').DataTable().destroy();

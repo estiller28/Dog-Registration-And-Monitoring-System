@@ -16,14 +16,14 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ Request::is('admin/manage/users') ||  Request::is('admin/manage/users/*')? 'active': '' }}">
+            <li class="sidebar-item {{ Request::is('admin/manage/users') ||  Request::is('admin/user/*')? 'active': '' }}">
                 <a class="sidebar-link " href="{{ route('users.index') }}">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">User Management</span>
                 </a>
             </li>
             <li class="sidebar-item {{ Request::is('admin/dogs') ||  Request::is('admin/dogs/*') ? 'active': '' }}">
                 <a class="sidebar-link" href="{{ route('dogs.index') }}">
-                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Dogs Management</span>
+                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Dog Management</span>
                 </a>
             </li>
 
@@ -32,6 +32,11 @@
                 <li class="sidebar-item {{ Request::is('co-admin/dashboard')? 'active': '' }} ">
                     <a class="sidebar-link" href="{{ route('coAdminDashboard') }}">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">Dog Management</span>
                     </a>
                 </li>
 

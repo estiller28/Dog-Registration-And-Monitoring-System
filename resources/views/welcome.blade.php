@@ -118,7 +118,6 @@
     <footer id="footer">
         <div class="container">
             <h4>Municipality of Bulan Sorsogon </h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque nostrum perferendis ratione soluta! Accusantium ad adipisci assumenda de </p>
             <div class="social-links">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>

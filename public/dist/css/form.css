@@ -12,3 +12,12 @@
     height: auto;
     display: block;
 }
+
+@media (max-width: 768px){
+    .mb-xs{
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+}
+

@@ -1,7 +1,7 @@
 <div>
     <div class="card-body">
         <div class="col-md-5 col-lg-3">
-            <form wire:submit.prevent="CreateUser" class="row needs-validation" novalidate>
+            <form wire:submit.prevent="updateUser" class="row needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="validationCustom01" class="form-label">Barangay Name</label>
                     <input type="text" wire:model="barangay_name" class="form-control  @error('barangay_name') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
@@ -45,10 +45,11 @@
                     <div class="mr-2"></div>
                     <div class="d-flex mt-3 gap-2 py-2">
                         <button type="submit"  class="btn btn-light btn-sm-block">Cancel</button>
-                        <button type="submit"  class="btn btn-primary btn-sm-block">Register</button>
+                        <button type="submit"  class="btn btn-primary btn-sm-block">Update</button>
                     </div>
                 </div>
             </form>
         </div>
+
     </div>
 </div>

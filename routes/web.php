@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function() {
             Route::get('/dogs/create', [AdminController::class, 'dogsCreate'])->name('dogs.create');
             Route::get('user/create', [AdminController::class, 'createUsers'])->name('user.create');
             Route::get('/manage/users', [AdminController::class, 'manageUsers'])->name('users.index');
+            Route::get('/user/edit/{user}', [AdminController::class, 'editUser'])->name('user.edit');
 
             // Edit
             Route::get('/dog/edit/{dog}', [AdminController::class, 'show'])->name('dog.edit');

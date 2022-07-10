@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Dogs;
+use App\Models\User;
 
 class AdminController extends Controller{
 
@@ -27,6 +28,9 @@ class AdminController extends Controller{
 
     public function show(Dogs $dog){
         return view('admin.dog_edit', compact('dog'));
+    }
+    public function editUser(User $user){
+        return view('admin.user_edit', compact('user'));
     }
 
 }

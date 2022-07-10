@@ -7,7 +7,7 @@
                         @if($count)
                             <span class="badge bg-success text-lg">{{ $count }}</span> <span class="align-middle fs-4">Registered Dogs</span>
                         @else
-                            <div class="">
+                            <div wire:ignore>
                                 <i class="align-middle" data-feather="database"></i> <span class="align-middle fs-4">Registered Dogs</span>
                             </div>
                         @endif
@@ -18,10 +18,13 @@
             <div class="card-body">
                 <form wire:submit.prevent="getDogs" class=" needs-validation" novalidate>
                     <div class="row d-flex mb-3">
-                        <div class="col-md-3 col-xs-3" >
+                        <div class="col-md-3 col-xs-3 mb-xs">
                             <select wire:model="barangay" class="form-select @error('barangay') is-invalid @enderror"  aria-describedby="validationServer04Feedback" required>
                                 <option selected="selected" value="">-Select barangay- </option>
                                 <option value="0">All Barangay</option>
+{{--                                @foreach($dogs as $dog)--}}
+{{--                                    <option value="{{ $dog }}">{{ $dog }}</option>--}}
+{{--                                @endforeach--}}
                                 @foreach($dogs as $dog)
                                     <option value="{{ $dog->id }}">{{ $dog->barangay_name }}</option>
                                 @endforeach
@@ -55,11 +58,11 @@
                 <div>
                     @if($allDogs != null)
                         <table id="dogsTable" class="table table-responsive table-striped" style="width:100%">
-                            <thead style="background: #D0C9C0; ">
+                            <thead style="background: #CFCFCF; ">
                             <tr>
                                 <th>ID Number</th>
+                                <th>Image</th>
                                 <th>Date Registered</th>
-                                <th>Dog Image</th>
                                 <th>Dog Name</th>
                                 <th>Owner's Name</th>
                                 <th>Contact Number</th>
@@ -71,12 +74,13 @@
                             @foreach($allDogs as $dog)
                                 <tr>
                                     <td>{{ $dog->id_number }}</td>
-                                    <td>{{ Carbon\Carbon::parse($dog->created_at)->toFormattedDateString() }}</td>
+
                                     @if($dog->dog_image === null)
                                         <td><img class="img-fluid" src="{{ asset('./storage/logo/dog-placeholder.jpg') }}" style="width: 50px; border-radius: 10px; height: 50px;"></td>
                                     @else
                                         <td><img src="{{ asset('/storage/'. $dog->dog_image)  }}"  style="width: 50px; border-radius: 10px; height: 50px;"></td>
                                     @endif
+                                    <td>{{ Carbon\Carbon::parse($dog->created_at)->toFormattedDateString() }}</td>
                                     <td>{{ $dog->dog_name}}</td>
                                     <td>{{ $dog->owner_name }}</td>
                                     <td>{{ $dog->contact_number }}</td>
