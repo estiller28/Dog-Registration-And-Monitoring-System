@@ -41,7 +41,10 @@
                             @if($allDogs != null)
                                 @if(!$allDogs->isEmpty())
                                     <div>
-                                        <button wire:click="export" wire:loading.attr="disabled" type="button" class="btn btn-md btn-info"><i class="align-middle me-1 fa-solid fa-circle-down"></i>Export</button></div>
+                                        <button wire:click="export" wire:loading.attr="disabled" type="button" class="btn btn-md btn-info"><i class="align-middle me-1 fa-solid fa-circle-down"></i>
+                                            <span wire:loading.remove wire:target="export">Export</span>
+                                            <span wire:loading wire:target="export">Exporting..</span>
+                                        </button></div>
                                     <div class="d-flex ms-auto">
                                         <input id="customSearch" type="search" class="form-control mr-2" placeholder="Search">
                                     </div>

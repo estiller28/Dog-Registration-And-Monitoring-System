@@ -50,7 +50,7 @@ class CreateDogsForm extends Component
         'sex_description' => 'required',
         'vaccines_taken' => 'required',
         'owner_name' => 'required',
-        'contact_number' => 'required|max:11',
+        'contact_number' => 'required|min:10|max:11',
         'purok' => 'required',
     ];
 
@@ -91,13 +91,9 @@ class CreateDogsForm extends Component
             'id_number' => strtoupper(substr($this->dog_name, 0, 3)). '-' .substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 6)
         ]);
 
+        session()->flash('message', 'Dog created successfully!');
 
-        $this->dispatchBrowserEvent('toastr:info', [
-            'type' => 'success',
-            'message' => 'Dog record created successfully',
-        ]);
-
-        $this->resetExcept('barangays');
+        return redirect()->route('dogs.index');
     }
 
 

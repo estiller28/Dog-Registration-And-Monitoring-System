@@ -32,6 +32,12 @@ class DogEdit extends Component
     public Dogs $dog;
     public $did;
 
+    public $readyToload = false;
+    public function loadDogInfo(){
+        $this->readyToload = true;
+    }
+
+
     protected $rules = [
         'dog_name' => 'required',
         'new_image' => 'max:2048',
@@ -73,7 +79,7 @@ class DogEdit extends Component
     }
     public function render()
     {
-        return view('livewire.dog-edit');
+        return view('livewire.admin.dog-edit');
     }
 
     public function update(){
@@ -107,7 +113,7 @@ class DogEdit extends Component
         ]);
 
         $this->dispatchBrowserEvent('toastr:info', [
-            'type' => 'success',
+            'type' => 'info',
             'message' => 'Dog record updated successfully',
         ]);
     }

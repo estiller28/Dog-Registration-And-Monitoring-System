@@ -14,10 +14,6 @@ $(document).ready( function () {
         ],
         "dom": "lrtip" //t
 
-        // language:{
-        //     search: "_INPUT_",
-        //     searchPlaceholder: "Search..."
-        // }
     });
 
     $('#customSearch').keyup(function (){

@@ -1,4 +1,4 @@
-<div>
+<div wire:init="loadDogInfo">
     <div class="card-body">
         <form wire:submit.prevent="update" class=" needs-validation" novalidate>
             <div class="row g-5 justify-content-between px-lg-2">
@@ -162,7 +162,7 @@
             <div class="d-flex justify-content-between px-lg-2">
                 <div class="mr-2"></div>
                 <div class="d-flex gap-2">
-                    <button type="button"  class="btn btn-light btn-sm-block">Cancel</button>
+                    <a href="{{ route('dogs.index') }}"  class="btn btn-light btn-sm-block">Cancel</a>
                     <button type="submit"  class="btn btn-info btn-sm-block">Update</button>
                 </div>
             </div>

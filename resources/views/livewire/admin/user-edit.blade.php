@@ -44,7 +44,7 @@
                 <div class="d-flex justify-content-between mb-3">
                     <div class="mr-2"></div>
                     <div class="d-flex mt-3 gap-2 py-2">
-                        <button type="submit"  class="btn btn-light btn-sm-block">Cancel</button>
+                        <a href="{{ route('users.index') }}"  class="btn btn-light btn-sm-block">Cancel</a>
                         <button type="submit"  class="btn btn-primary btn-sm-block">Update</button>
                     </div>
                 </div>

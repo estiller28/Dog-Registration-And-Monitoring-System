@@ -55,7 +55,7 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="{{ route('dogs.index') }}" class="dropdown-item" href="#">View all dogs</a>
+                                            <a href="{{ route('dogs.index') }}" class="dropdown-item">View all dogs</a>
                                         </div>
                                     </div>
                                 </div>

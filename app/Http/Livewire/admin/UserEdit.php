@@ -13,8 +13,6 @@ class UserEdit extends Component
     public User $user;
     public $uid;
 
-
-
     public function mount($user){
         $this->uid = $user->id;
         $this->barangay_name = $user->barangay->barangay_name;
@@ -47,7 +45,7 @@ class UserEdit extends Component
 
         $user = $this->user->barangay->id;
 
-        $barangay = Barangay::where('id', $user)
+       Barangay::where('id', $user)
             ->update([
                 'barangay_name' => $this->barangay_name,
             ]);

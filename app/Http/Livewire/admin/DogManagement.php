@@ -176,6 +176,7 @@ class DogManagement extends Component
         }
 
         $dog->delete();
+
         $this->dispatchBrowserEvent('toastr:info', [
             'type' => 'info',
             'message' => 'Dog deleted successfully',

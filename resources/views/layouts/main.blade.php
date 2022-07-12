@@ -56,12 +56,13 @@
 
                 const imgPreview = document.getElementById("img-preview");
                 const placeHolder = document.getElementById("placeholder");
-                imgPreview.style.display = "none";
-                placeHolder.style.display = "block";
+                imgPreview.style.display = "block";
+                placeHolder.style.display = "none";
 
                 break;
             case 'success':
                 toastr.success(event.detail.message);
+
                 break;
             case 'warning':
                 toastr.warning(event.detail.message);
@@ -74,20 +75,13 @@
     });
 </script>
 
-<style>
-    #toast-container > .toast-custom {
-        background-color: orange !important;
-    }
-</style>
 <script type="text/javascript">
     @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info') }}"
+    var type = "{{ Session::get('alert-type', 'success') }}"
     toastr.options.progressBar = true;
     switch (type){
         case 'info':
-            toastr.info("{{Session::get('message')}}", {
-                "iconClass": "toast-custom";
-            });
+            toastr.info("{{Session::get('message')}}");
             break;
 
         case 'success':

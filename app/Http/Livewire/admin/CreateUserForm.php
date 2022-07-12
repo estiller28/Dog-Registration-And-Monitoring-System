@@ -22,7 +22,7 @@ class CreateUserForm extends Component
         'name' => 'required',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:8',
-        'password_confirmation' => 'nullable|same:password',
+        'password_confirmation' => 'required|same:password',
 
     ];
 

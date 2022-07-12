@@ -2,10 +2,10 @@
     <div class="col-md-12 mb-5">
         <form wire:submit.prevent="searchDogs">
             <div class="d-flex">
-                <div class="input-group input-group-lg">
+                <div class="input-group ">
                     <input wire:model="idNumber" type="text" class="form-control"
                         aria-label="search dogs" placeholder="Enter Dog Trace Number"  required   >
-                    <button type="submit" class="btn btn-lg btn-success">Search <span><i class='bx bx-search-alt-2'></i></span></button>
+                    <button type="submit" class="btn btn-lg btn-success">Search </button>
                 </div>
             </div>
         </form>
