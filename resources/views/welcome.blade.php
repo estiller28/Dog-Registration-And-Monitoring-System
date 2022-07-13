@@ -12,8 +12,8 @@
     <link href="{{ asset('home/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('home/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('home/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-
     <link href="{{ asset('home/assets/css/style.css') }}" rel="stylesheet">
+    <link rel="icon">
 </head>
 <body>
 <header id="header" class="d-flex align-items-center">

@@ -12,6 +12,8 @@ class AdminProfile extends Component
 {
     public $name, $email, $password, $password_confirmation, $uid;
 
+    protected $listeners = ['updatePassword'];
+
     public $readyToload = false;
     public function userProfile(){
         $this->readyToload = true;
@@ -23,7 +25,6 @@ class AdminProfile extends Component
         $this->email = Auth::user()->email;
 
     }
-
     protected function rules(){
         return [
             'name' => 'required',
@@ -37,21 +38,64 @@ class AdminProfile extends Component
         $this->validateOnly($propertyName);
     }
 
-
-
-    public function updateProfile(){
-        $this->validate();
+    public function updateName(){
+        $this->validate([
+            'name' => 'required'
+        ]);
 
         User::find($this->uid)->update([
             'name' => $this->name,
-            'email' => $this->email,
-            'password' => Hash::make($this->password),
         ]);
 
         $this->dispatchBrowserEvent('toastr:info', [
             'type' => 'info',
-            'message' => 'Account updated successfully',
+            'message' => 'Name updated successfully!',
         ]);
+    }
+
+    public function updateEmail(){
+        $this->validate([
+            'email' => 'required|email|unique:users,email,'.  $this->uid,
+        ]);
+
+        User::find($this->uid)->update([
+            'name' => $this->name,
+        ]);
+
+        $this->dispatchBrowserEvent('toastr:info', [
+            'type' => 'info',
+            'message' => 'Email updated successfully!',
+        ]);
+    }
+
+    public function confirmUpdatePassword(){
+        $this->validate([
+            'password' => 'required|min:8'
+        ]);
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'type' => 'info',
+            'title' => 'Are you sure?',
+            'text' => 'Your account will be logged out immediately!',
+        ]);
+    }
+
+    public function updatePassword(){
+        User::find($this->uid)->update([
+            'password' => bcrypt($this->password)
+        ]);
+
+
+        $this->dispatchBrowserEvent('toastr:info', [
+            'type' => 'info',
+            'message' => 'Password updated successfully!',
+        ]);
+
+        Auth::logout();
+
+
+
+        return redirect()->route('dashboard');
+
 
     }
 
