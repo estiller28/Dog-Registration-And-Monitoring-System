@@ -56,8 +56,9 @@
 
                 const imgPreview = document.getElementById("img-preview");
                 const placeHolder = document.getElementById("placeholder");
-                imgPreview.style.display = "block";
-                placeHolder.style.display = "none";
+
+                // placeHolder.style.display = "none";
+                // imgPreview.style.display = "block";
 
                 break;
             case 'success':

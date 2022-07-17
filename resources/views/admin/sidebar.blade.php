@@ -34,16 +34,12 @@
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="">
+                <li class="sidebar-item {{ Request::is('co-admin/manage/dogs')? 'active': '' }}">
+                    <a class="sidebar-link" href="{{ route('coAdminDogs.index') }}">
                         <i class="align-middle" data-feather="list"></i> <span class="align-middle">Dog Management</span>
                     </a>
                 </li>
-
-
             @endrole
-
-
         </ul>
     </div>
 </nav>

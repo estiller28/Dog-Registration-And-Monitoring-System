@@ -70,7 +70,8 @@ class AdminProfile extends Component
 
     public function confirmUpdatePassword(){
         $this->validate([
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|same:password',
         ]);
         $this->dispatchBrowserEvent('swal:confirm', [
             'type' => 'info',
@@ -91,8 +92,6 @@ class AdminProfile extends Component
         ]);
 
         Auth::logout();
-
-
 
         return redirect()->route('dashboard');
 

@@ -13,7 +13,7 @@
                     <div wire:ignore class="col-md-12">
                         <div id="img-preview"></div>
                     </div>
-                    <label for="dog_image" class="form-label">Select image</label>
+                    <label for="new_image" class="form-label">Select image</label>
                     <input wire:model="new_image" class="form-control @error('new_image') is-invalid @enderror" type="file"  accept="image/jpeg" id="image">
                     @error('new_image')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -25,7 +25,7 @@
                         <div class="col-md-6 mb-4 border-">
                             <h4 class="mb-4"><strong>1. Dog Information</strong></h4>
                             <div class="mb-3">
-                                <label for="dog_image" class="form-label">Dog Name</label>
+                                <label for="dog_name" class="form-label">Dog Name</label>
                                 <input type="text" wire:model="dog_name"  class="form-control  @error('dog_name') is-invalid @enderror"  required aria-describedby="validationServer03Feedback">
                                 @error('dog_name')
                                 <div class="invalid-feedback">{{ $message }}</div>

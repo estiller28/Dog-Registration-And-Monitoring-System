@@ -22,9 +22,9 @@
                             <select wire:model="barangay" class="form-select @error('barangay') is-invalid @enderror"  aria-describedby="validationServer04Feedback" required>
                                 <option selected="selected" value="">-Select barangay- </option>
                                 <option value="0">All Barangay</option>
-{{--                                @foreach($dogs as $dog)--}}
-{{--                                    <option value="{{ $dog }}">{{ $dog }}</option>--}}
-{{--                                @endforeach--}}
+                                {{--                                @foreach($dogs as $dog)--}}
+                                {{--                                    <option value="{{ $dog }}">{{ $dog }}</option>--}}
+                                {{--                                @endforeach--}}
                                 @foreach($dogs as $dog)
                                     <option value="{{ $dog->id }}">{{ $dog->barangay_name }}</option>
                                 @endforeach
@@ -36,7 +36,13 @@
 
                         <div class="col-md-9 d-flex gap-2 flex-wrap">
                             <div><button wire:ignore type="submit"  class="btn btn-md btn-primary"><i class="align-middle me-1" data-feather="filter"></i>Apply Filter</button></div>
-                            <div><a wire:ignore  href="{{ route('dogs.create') }}" class="btn btn-md btn-success btn-sm-block"><i class="align-middle me-2" data-feather="folder-plus"></i>Register Dogs</a></div>
+
+                            @if($users != null)
+                                <div><a wire:ignore  href="{{ route('dogs.create') }}" class="btn btn-md btn-success btn-sm-block"><i class="align-middle me-2" data-feather="folder-plus"></i>Register Dogs</a></div>
+                            @else
+                                <div><button type="button" wire:ignore wire:click="registerInvalid" class="btn btn-md btn-success btn-sm-block">
+                                        <i class="align-middle me-2" data-feather="folder-plus"></i>Register Dogs</button></div>
+                            @endif
 
                             @if($allDogs != null)
                                 @if(!$allDogs->isEmpty())

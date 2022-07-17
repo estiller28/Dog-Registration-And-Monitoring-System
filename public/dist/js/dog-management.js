@@ -34,6 +34,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+window.addEventListener('swal:invalid', event => {
+    swal.fire({
+        title: event.detail.title,
+        text: event.detail.text,
+        icon: event.detail.type,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Okay, got it!'
+
+    }) .then((result) => {
+        if (result.isConfirmed) {
+            window.livewire.emit('redirectToCreateUser');
+        }
+    });
+});
+
+
+
 window.addEventListener('swal:confirm', event => {
     swal.fire({
         title: event.detail.title,

@@ -54,9 +54,8 @@
                         </div>
                     </div>
                 </div>
-
             @empty
-                <p>No Data</p>
+                <p >No Data</p>
             @endforelse
         @endif
     </div>

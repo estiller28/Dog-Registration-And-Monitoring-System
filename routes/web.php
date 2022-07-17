@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function() {
 
         Route::prefix('co-admin')->group(function(){
             Route::get('/dashboard', [CoAdminController::class, 'dashboard'])->name('coAdminDashboard');
+            Route::get('/manage/dogs', [CoAdminController::class, 'manageDogs'])->name('coAdminDogs.index');
         });
     });
 

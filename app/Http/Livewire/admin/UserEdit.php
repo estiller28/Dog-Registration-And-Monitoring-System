@@ -27,7 +27,7 @@ class UserEdit extends Component
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'. $this->uid,
             'password' => 'required|min:8',
-            'password_confirmation' => 'nullable|same:password',
+            'password_confirmation' => 'required|same:password',
         ];
     }
 
@@ -40,25 +40,57 @@ class UserEdit extends Component
         return view('livewire.admin.user-edit');
     }
 
-    public function updateUser(){
+    public function updateBarangay(){
         $this->validate();
-
         $user = $this->user->barangay->id;
 
-       Barangay::where('id', $user)
+        Barangay::where('id', $user)
             ->update([
                 'barangay_name' => $this->barangay_name,
             ]);
 
+        $this->dispatchBrowserEvent('toastr:info', [
+            'type' => 'info',
+            'message' => 'Barangay name updated successfully!',
+        ]);
+    }
+    public function updateName(){
+        $this->validate();
+
         User::find($this->uid)->update([
-            'name'        => $this->name,
-            'email'       => $this->email,
-            'password'    => $this->password,
+            'name' => $this->name,
         ]);
 
         $this->dispatchBrowserEvent('toastr:info', [
             'type' => 'info',
-            'message' => 'User updated successfully',
+            'message' => 'User name updated successfully!',
         ]);
     }
+
+    public function updateEmail(){
+        $this->validate();
+
+        User::find($this->uid)->update([
+            'email' => $this->email,
+        ]);
+
+        $this->dispatchBrowserEvent('toastr:info', [
+            'type' => 'info',
+            'message' => 'Email updated successfully!',
+        ]);
+    }
+
+    public function updatePassword(){
+        $this->validate();
+
+        User::find($this->uid)->update([
+            'password' => bcrypt($this->password),
+        ]);
+
+        $this->dispatchBrowserEvent('toastr:info', [
+            'type' => 'info',
+            'message' => 'Password updated successfully!',
+        ]);
+    }
+
 }
